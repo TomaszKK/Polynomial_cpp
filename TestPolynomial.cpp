@@ -1,4 +1,3 @@
-
 #include "Poly.h"														// Defines class Poly
 #include <iostream>
 

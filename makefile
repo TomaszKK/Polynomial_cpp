@@ -2,10 +2,10 @@
 headers = Poly.h
 
 # List your *.c files:
-sources = Poly.c TestPolynomial.cpp
+sources = Poly.cpp TestPolynomial.cpp
 
 # Specify name of your program:
-executable = stack
+executable = poly
 
 $(executable): $(headers) $(sources)
 	g++ -g -Wall -pedantic $(sources) -o $(executable)
