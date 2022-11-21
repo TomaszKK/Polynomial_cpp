@@ -144,16 +144,9 @@ Poly operator*(Poly first, Poly second){
     newPoly.coef.resize(first.coef.size()+second.coef.size());
     for (int i = 0; i < (int)first.power.size(); i++) {
         for (int j = 0; j < (int)second.power.size(); j++) {
-            if(newPoly.coef[(second.power[j] + first.power[i])] != 0){
-                newPoly.coef[second.power[j]+first.power[i]] += second.coef[j] * first.coef[i];
-                newPoly.power[i + j] = i + j;
-            }
-            else{
-                newPoly.coef[second.power[j]+first.power[i]] = second.coef[j] * first.coef[i];
-                newPoly.power[i + j] = i + j;
-            }
-            //newPoly.coef[i + j] += first.coef[i] * second.coef[j];
-            //
+            int pow = second.power[j] + first.power[i];
+            newPoly.power[second.power[j] + first.power[i]-1] = pow;
+            newPoly.coef[newPoly.findIndex(pow)] += second.coef[j] * first.coef[i];
         } 
     }
     newPoly.sortPowers();
