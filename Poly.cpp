@@ -140,21 +140,19 @@ Poly operator-(Poly first, Poly second){
 
 Poly operator*(Poly first, Poly second){
     Poly newPoly;
-    int size = first.power.size()+second.power.size();
-    newPoly.power.resize(size);
-    newPoly.coef.resize(size);
     for (int i = 0; i < (int)first.power.size(); i++) {
         for (int j = 0; j < (int)second.power.size(); j++) {
             int pow = second.power[j] + first.power[i];
-            newPoly.power[second.power[j] + first.power[i]-1] = pow;
-            newPoly.coef[newPoly.findIndex(pow)] += second.coef[j] * first.coef[i];
+            if(newPoly.findIndex(pow)){
+                newPoly.coef[newPoly.findIndex(pow)] += second.coef[j] * first.coef[i];
+            }
+            else{
+                newPoly.power.push_back(pow);
+                newPoly.coef.push_back(second.coef[j] * first.coef[i]);
+            }
         } 
     }
     newPoly.sortPowers();
-    if(newPoly.power[newPoly.power.size()-1] == 0 && newPoly.coef[newPoly.coef.size()-1]  == 0){
-        newPoly.power.pop_back();
-        newPoly.coef.pop_back();
-    }
     return newPoly;
 }
 
