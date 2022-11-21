@@ -35,8 +35,8 @@ void test(const Poly& p1, const Poly& p2) {
 	testAddition(p1, p2);	
 	testSubtraction(p1, p2);	
 	testMultiplication(p1, p2);
-	//testNegation(p1, p2);
-	//testValue(p1, p2);
+	testNegation(p1, p2);
+	testValue(p1, p2);
 }
 
 void testAddition(const Poly& p1, const Poly& p2) {
