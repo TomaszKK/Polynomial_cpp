@@ -94,7 +94,7 @@ Poly& Poly::sortPowers(){
     return *this;
 }
 
-Poly operator+(Poly first, Poly second){
+Poly operator+(Poly first, Poly const &second){
     int firstsize = first.power.size();
     
     for(int i = 0; i < (int)second.power.size(); i++){
@@ -116,7 +116,7 @@ Poly operator+(Poly first, Poly second){
     return first;
 }
 
-Poly operator-(Poly first, Poly second){
+Poly operator-(Poly first, Poly const &second){
     int firstsize = first.power.size();
     
     for(int i = 0; i < (int)second.power.size(); i++){
@@ -138,7 +138,7 @@ Poly operator-(Poly first, Poly second){
     return first;
 }
 
-Poly operator*(Poly first, Poly second){
+Poly operator*(Poly const &first, Poly const &second){
     Poly newPoly;
     for (int i = 0; i < (int)first.power.size(); i++) {
         for (int j = 0; j < (int)second.power.size(); j++) {
@@ -163,7 +163,7 @@ Poly operator-(Poly poly){
     return poly;
 }
 
-float Poly::operator()(const float& point) const
+float Poly::operator()(float point) const
 {
 	float answer = 0;
 	if (coef.size() == 0)
